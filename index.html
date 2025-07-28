@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Boutique Locale - Accueil</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>La Petite Boutique - Accueil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;500&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -16,80 +16,139 @@
       background: #f7f6f3;
       color: #333;
       line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     header {
-      background-color: #ffffff;
-      padding: 1.5rem 2rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      background-color: #fff;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
     header h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
+      font-size: 2rem;
+      color: #222;
+      letter-spacing: 1.1px;
     }
     nav a {
-      margin-left: 1rem;
+      margin-left: 1.5rem;
       text-decoration: none;
-      color: #333;
-      font-weight: 500;
+      color: #444;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #b78e29; /* doré */
     }
     .hero {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 3rem 2rem;
-      background: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4') center/cover no-repeat;
-      color: white;
+      padding: 4rem 2rem;
+      background: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      color: #fff;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+      min-height: 420px;
+      justify-content: center;
     }
     .hero h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin-bottom: 1rem;
+      line-height: 1.1;
     }
     .hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
+      font-size: 1.3rem;
+      max-width: 620px;
+      margin-bottom: 2rem;
+      font-weight: 500;
     }
     .cta {
-      margin-top: 2rem;
-      padding: 1rem 2rem;
-      background: white;
-      color: #333;
-      border-radius: 8px;
+      padding: 1rem 2.5rem;
+      background: #b78e29;
+      color: #fff;
+      border-radius: 30px;
       text-decoration: none;
-      font-weight: 600;
-      transition: background 0.3s ease;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 12px rgba(183, 142, 41, 0.5);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
     }
     .cta:hover {
-      background: #f0f0f0;
+      background: #a47821;
+      box-shadow: 0 8px 20px rgba(164, 120, 33, 0.7);
     }
     .features {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
-      padding: 4rem 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      padding: 5rem 3rem;
       background: #fff;
+      flex-grow: 1;
     }
     .feature {
-      background: #f9f9f9;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+      background: #f9f7f1;
+      padding: 2.5rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.07);
       text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .feature:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
     }
     .feature h3 {
       font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
       margin-bottom: 1rem;
+      color: #5a4a0e;
+    }
+    .feature p {
+      font-size: 1.1rem;
+      color: #5a5a5a;
+      font-weight: 500;
     }
     footer {
       text-align: center;
-      padding: 2rem;
+      padding: 2rem 1rem;
       font-size: 0.9rem;
       background: #fafafa;
-      color: #666;
+      color: #777;
+      box-shadow: inset 0 1px 0 #ddd;
+      user-select: none;
+    }
+
+    @media (max-width: 600px) {
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      .features {
+        padding: 3rem 1rem;
+      }
+      header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+      }
+      nav a {
+        margin-left: 0.8rem;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
